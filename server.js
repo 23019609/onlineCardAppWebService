@@ -94,7 +94,7 @@ app.post("/login", (req, res) => {
 });
 
 // Example Route: Get all cards
-app.get("/allcards", requireAuth, async (req, res) => {
+app.get("/allcards", async (req, res) => {
     try {
         let connection = await mysql.createConnection(dbConfig);
         const [rows] = await connection.execute(
