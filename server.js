@@ -108,7 +108,7 @@ app.get("/allcards", requireAuth, async (req, res) => {
 });
 
 // Example Route: Create a new card
-app.post("/addcard", async (req, res) => {
+app.post("/addcard", requireAuth, async (req, res) => {
     const { card_name, card_pic } = req.body;
     try {
         let connection = await mysql.createConnection(dbConfig);
@@ -128,7 +128,7 @@ app.post("/addcard", async (req, res) => {
 });
 
 // Example Route: Update a card
-app.put("/updatecard/:id", async (req, res) => {
+app.put("/updatecard/:id", requireAuth, async (req, res) => {
     const { id } = req.params;
     const { card_name, card_pic } = req.body;
     try {
@@ -149,7 +149,7 @@ app.put("/updatecard/:id", async (req, res) => {
 });
 
 // Example Route: Delete a card
-app.delete("/deletecard/:id", async (req, res) => {
+app.delete("/deletecard/:id", requireAuth, async (req, res) => {
     const { id } = req.params;
     try {
         let connection = await mysql.createConnection(dbConfig);
